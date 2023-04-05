@@ -12,7 +12,7 @@ app = App(
 openai.api_type = "azure"
 openai.api_base = os.environ["OPENAI_API_BASE"]
 openai.api_key = os.environ["OPENAI_API_KEY"]
-openai.api_version = "2023-03-15-preview"
+openai.api_version = os.environ["OPENAI_API_VERSION"]
 
 threads = {} 
 
@@ -25,7 +25,7 @@ def handle_prompt(ts, text, say):
     print(threads[ts])
 
     response = openai.ChatCompletion.create(
-        engine="oursky-demo",
+        engine=os.environ["OPENAI_ENGINE"],
         messages = threads[ts],
         temperature=0.5,
         max_tokens=800,
