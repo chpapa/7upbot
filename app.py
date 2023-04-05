@@ -22,8 +22,6 @@ def handle_prompt(ts, text, say):
 
     threads[ts].append({"role":"user", "content": text})
 
-    print(threads[ts])
-
     response = openai.ChatCompletion.create(
         engine=os.environ["OPENAI_ENGINE"],
         messages = threads[ts],
